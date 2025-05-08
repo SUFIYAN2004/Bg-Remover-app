@@ -16,12 +16,12 @@ if uploaded_file is not None:
     st.success(f"Image saved to: {original_path}")
 
     image = Image.open(uploaded_file)
-    st.image(image, caption="Original Image", use_column_width=True)
+    st.image(image, caption="Original Image", use_container_width=True)
 
     with st.spinner("Removing bg..."):
         output = remove(file_bytes)
 
     result_image = Image.open(io.BytesIO(output))
-    st.image(result_image, caption="Image Without Background", use_column_width=True)
+    st.image(result_image, caption="Image Without Background", use_container_width=True)
 
     st.download_button("Download Transparent Image", output, file_name="no_bg.png")
